@@ -1,3 +1,5 @@
+import { linksConfig } from "@/config/links";
+
 export interface UpcomingEventData {
   sectionTitle: string;
   orientationCard: {
@@ -5,6 +7,7 @@ export interface UpcomingEventData {
     title: string;
     description: string;
     actionHref: string;
+    actionAriaLabel?: string;
   };
   featuredCard: {
     badge: string;
@@ -14,6 +17,12 @@ export interface UpcomingEventData {
     time: string;
     ctaText: string;
     ctaHref: string;
+    ctaAriaLabel?: string;
+  };
+  viewAllLink: {
+    text: string;
+    href: string;
+    ariaLabel: string;
   };
 }
 
@@ -24,7 +33,8 @@ export const upcomingEventData: UpcomingEventData = {
     title: "GDG ORIENTATION",
     description:
       "Google Developer Groups (GDG) - Student Chapter is a community of students passionate about technology, innovation, and learning. We bring students together to learn, build, and grow through technical workshops, hands-on sessions, hackathons, projects, and networking.",
-    actionHref: "#team",
+    actionHref: linksConfig.events,
+    actionAriaLabel: "Explore and register for GDG RBU events on the platform",
   },
   featuredCard: {
     badge: "FEATURED",
@@ -33,6 +43,12 @@ export const upcomingEventData: UpcomingEventData = {
     date: "Oct 7, 2024",
     time: "3:00 PM",
     ctaText: "Register Now",
-    ctaHref: "https://gdg.community.dev/events",
+    ctaHref: linksConfig.events,
+    ctaAriaLabel: "Register for GDG RBU events: view upcoming schedule and RSVP",
+  },
+  viewAllLink: {
+    text: "View all events →",
+    href: linksConfig.events,
+    ariaLabel: "View all upcoming and past GDG RBU events on the platform",
   },
 };

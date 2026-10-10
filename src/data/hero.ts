@@ -1,7 +1,10 @@
+import { linksConfig } from "@/config/links";
+
 export interface HeroCTA {
   label: string;
   href: string;
   variant: "primary" | "outline";
+  ariaLabel?: string;
 }
 
 export interface HeroData {
@@ -26,13 +29,15 @@ export const heroData: HeroData = {
   ctas: [
     {
       label: "LEARN MORE",
-      href: "#upcoming-event",
+      href: "#team",
       variant: "outline",
+      ariaLabel: "Learn more about GDG RBU and the team",
     },
     {
-      label: "JOIN US",
-      href: "https://gdg.community.dev",
+      label: "JOIN",
+      href: linksConfig.login,
       variant: "outline",
+      ariaLabel: "Join GDG RBU: sign in to the events platform",
     },
   ],
   badge: {

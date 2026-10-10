@@ -75,26 +75,35 @@ export function Hero() {
               className="flex flex-col items-start gap-4 pt-1"
             >
               <div className="flex flex-wrap items-center gap-3.5">
-                {heroData.ctas.map((cta, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    size="md"
-                    className="min-h-[44px] min-w-[120px] font-mono uppercase font-bold tracking-wider px-6 py-3 bg-surface text-foreground"
-                    onClick={() => {
-                      if (cta.href.startsWith("#")) {
+                {heroData.ctas.map((cta, index) =>
+                  cta.href.startsWith("#") ? (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      size="md"
+                      className="min-h-[44px] min-w-[120px] font-mono uppercase font-bold tracking-wider px-6 py-3 bg-surface text-foreground"
+                      aria-label={cta.ariaLabel}
+                      onClick={() => {
                         const target = document.getElementById(cta.href.replace("#", ""));
                         target?.scrollIntoView({
                           behavior: shouldReduceMotion ? "auto" : "smooth",
                         });
-                      } else {
-                        window.open(cta.href, "_blank", "noopener,noreferrer");
-                      }
-                    }}
-                  >
-                    {cta.label}
-                  </Button>
-                ))}
+                      }}
+                    >
+                      {cta.label}
+                    </Button>
+                  ) : (
+                    <a
+                      key={index}
+                      href={cta.href}
+                      rel="noopener"
+                      aria-label={cta.ariaLabel || "Join GDG RBU: sign in to the events platform"}
+                      className="inline-flex items-center justify-center min-h-[44px] min-w-[120px] font-mono uppercase font-bold tracking-wider px-6 py-3 rounded-xl border-2 border-border bg-surface text-foreground shadow-neo-sm hover:shadow-neo hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all cursor-pointer select-none"
+                    >
+                      {cta.label}
+                    </a>
+                  )
+                )}
               </div>
 
               {/* Rotated Neo-brutalist GDG Tag */}

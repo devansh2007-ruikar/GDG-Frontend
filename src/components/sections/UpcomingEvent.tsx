@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Calendar, Clock, ExternalLink } from "lucide-react";
 import { upcomingEventData } from "@/data/events";
 import { Container } from "@/components/ui/Container";
 
@@ -11,7 +11,8 @@ import { Container } from "@/components/ui/Container";
  * - Section reveal on scroll (whileInView, once)
  * - Card hover lifts and button press feedback
  * - 44px minimum accessible touch targets
- * - Dark-mode adaptive white borders & shadows
+ * - Direct connection to live GDG Event Management app
+ * - Same-tab external navigation with rel="noopener"
  */
 export function UpcomingEvent() {
   const shouldReduceMotion = useReducedMotion();
@@ -64,19 +65,19 @@ export function UpcomingEvent() {
               </p>
             </div>
 
-            {/* Bottom Action: Round Yellow Button (44px tap target) */}
+            {/* Bottom Action: Round Yellow Button linking to Events Platform */}
             <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  const target = document.getElementById("team");
-                  target?.scrollIntoView({ behavior: shouldReduceMotion ? "auto" : "smooth" });
-                }}
+              <a
+                href={upcomingEventData.orientationCard.actionHref}
+                rel="noopener"
+                aria-label={
+                  upcomingEventData.orientationCard.actionAriaLabel ||
+                  "Explore all GDG RBU events on the platform"
+                }
                 className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-gdg-yellow text-black border-2 border-black flex items-center justify-center shadow-neo-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-                aria-label="View orientation and team details"
               >
                 <ArrowRight className="w-5 h-5 text-black stroke-[2.5]" />
-              </button>
+              </a>
             </div>
           </motion.div>
 
@@ -113,19 +114,41 @@ export function UpcomingEvent() {
               </div>
             </div>
 
-            {/* Bottom CTA Button: Black Pill Register Now (48px tap target) */}
+            {/* Bottom CTA Button: Black Pill Register Now (Same tab, rel="noopener") */}
             <div className="pt-8 mt-auto">
               <a
                 href={upcomingEventData.featuredCard.ctaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full min-h-[48px] inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-black text-white font-mono text-sm font-bold tracking-wider border-2 border-border shadow-neo-sm hover:bg-neutral-800 hover:shadow-neo active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                rel="noopener"
+                aria-label={
+                  upcomingEventData.featuredCard.ctaAriaLabel ||
+                  "Register for GDG RBU events on the platform"
+                }
+                className="w-full min-h-[48px] inline-flex items-center justify-center py-3.5 px-6 rounded-full bg-black text-white font-mono text-sm font-bold tracking-wider border-2 border-border shadow-neo-sm hover:bg-neutral-800 hover:shadow-neo active:translate-y-0.5 active:shadow-none transition-all cursor-pointer select-none"
               >
                 {upcomingEventData.featuredCard.ctaText}
               </a>
             </div>
           </motion.div>
         </div>
+
+        {/* View All Events Link */}
+        <motion.div
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.35, delay: shouldReduceMotion ? 0 : 0.1 }}
+          className="mt-8 sm:mt-10 text-center"
+        >
+          <a
+            href={upcomingEventData.viewAllLink.href}
+            rel="noopener"
+            aria-label={upcomingEventData.viewAllLink.ariaLabel}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-mono text-xs sm:text-sm font-bold text-foreground bg-surface border-2 border-border shadow-neo-sm hover:shadow-neo hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all cursor-pointer select-none group"
+          >
+            <span>{upcomingEventData.viewAllLink.text}</span>
+            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+          </a>
+        </motion.div>
       </Container>
     </section>
   );

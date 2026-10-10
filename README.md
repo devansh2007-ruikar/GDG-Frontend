@@ -9,7 +9,28 @@ An authentic, pixel-accurate, neo-brutalist web application built for the **Goog
 
 - **Live URL**: [https://gdg-rbu-frontend.vercel.app](https://gdg-rbu-frontend.vercel.app) *(Deployment Placeholder)*
 - **GitHub Repository**: [https://github.com/devansh2007-ruikar/GDG-Frontend](https://github.com/devansh2007-ruikar/GDG-Frontend)
+- **Live Event Management Platform**: [https://gdg-iota-inky.vercel.app](https://gdg-iota-inky.vercel.app)
 - **Figma Design Reference**: `GDG-RBU_web-development_frontend_Task-2026-27.pdf` / Figma Canvas (`gdgrbu.app` styling)
+
+---
+
+## 🔗 Connected Platform
+
+This recruitment portal is directly connected to our live, production-grade **GDG Event Management Platform**:
+
+| Platform Component | Technology Stack | Live URL |
+| :--- | :--- | :--- |
+| **Recruitment Landing Page** (This Repo) | Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion, Google Gemini AI | [https://gdg-rbu-frontend.vercel.app](https://gdg-rbu-frontend.vercel.app) |
+| **Event Management App** (Live Full-Stack) | Full-Stack: Next.js Frontend + Express.js API + PostgreSQL Database | [https://gdg-iota-inky.vercel.app](https://gdg-iota-inky.vercel.app) |
+
+### Integrated Navigation Flow:
+- **Navbar "Join Us" Button**: Routes directly to the member sign-in and authentication portal (`https://gdg-iota-inky.vercel.app/login`).
+- **Hero "JOIN" CTA**: Connects users directly to the campus platform sign-in (`https://gdg-iota-inky.vercel.app/login`).
+- **Hero "LEARN MORE"**: Smooth-scrolls natively to the Meet the Team / About section (`#team`).
+- **Upcoming Event "Register Now" & Round Action Button**: Seamless RSVP link directly into the live event management system (`https://gdg-iota-inky.vercel.app/events`).
+- **Upcoming Event "View all events →"**: Dedicated browse link navigating to all scheduled workshops, hackathons, and study jams (`https://gdg-iota-inky.vercel.app/events`).
+- **"Ask GDG AI" Chatbot**: Context-aware Gemini assistant that automatically supplies direct links to the events app when answering user questions about joining, member registration, and event RSVPs.
+- **Centralized Configuration**: All external URLs are defined in [`src/config/links.ts`](file:///home/devansh/Documents/GDG-FRON/src/config/links.ts) via `NEXT_PUBLIC_EVENTS_APP_URL` with zero hardcoded URLs across components.
 
 [![Next.js 15](https://img.shields.io/badge/Next.js-15_(App_Router)-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -139,6 +160,8 @@ GDG-FRON/
 │   │       ├── Container.tsx         # Responsive max-width wrapper
 │   │       ├── SectionHeading.tsx    # Standardized pixel display headings
 │   │       └── ThemeToggle.tsx       # Rotating sun/moon theme button
+│   ├── config/
+│   │   └── links.ts                  # Centralized typed external platform & navigation links
 │   ├── data/                         # Strictly-typed data models (zero hardcoded JSX)
 │   │   ├── events.ts                 # Upcoming events & orientation data
 │   │   ├── faqs.ts                   # Frequently asked questions & answers
@@ -216,11 +239,12 @@ npm run start
 
 | Variable | Description | Required | Scope | Where to Obtain |
 | :--- | :--- | :---: | :---: | :--- |
+| `NEXT_PUBLIC_EVENTS_APP_URL` | Base URL of the live full-stack Event Management app. Defaults to `https://gdg-iota-inky.vercel.app`. | Optional (Fallback provided) | Public / Client & Server | Configured in [Vercel](https://vercel.com) or `.env.local` |
 | `GEMINI_API_KEY` | API key for Google Gemini generative AI (`gemini-2.5-flash`). | Recommended | Server-Side Only | [Google AI Studio](https://aistudio.google.com/app/apikey) |
 
 ### Security Guarantees:
 - **Server Isolation**: `GEMINI_API_KEY` is exclusively evaluated within the server-side Route Handler at [`src/app/api/chat/route.ts`](file:///home/devansh/Documents/GDG-FRON/src/app/api/chat/route.ts).
-- **No Client Exposure**: The environment variable does not have a `NEXT_PUBLIC_` prefix, preventing Next.js from bundling it into client JavaScript.
+- **No Private Secret Client Exposure**: Private secret tokens never carry a `NEXT_PUBLIC_` prefix, preventing Next.js from bundling sensitive keys into client JavaScript.
 - **Git Protection**: `.env.local` is listed in `.gitignore` to prevent credentials from ever being committed to source control.
 
 ---

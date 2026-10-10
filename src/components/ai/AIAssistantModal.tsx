@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles, Send, Bot, User, AlertCircle } from "lucide-react";
 import type { ChatMessage } from "@/types/ai";
+import { linksConfig } from "@/config/links";
 import { cn } from "@/lib/utils";
 
 interface AIAssistantModalProps {
@@ -45,6 +46,27 @@ interface ChatMessageItemProps {
   isTyping: boolean;
 }
 
+function renderFormattedContent(text: string) {
+  const urlRegex = /(https?:\/\/[^\s)]+)/g;
+  const parts = text.split(urlRegex);
+
+  return parts.map((part, index) => {
+    if (part.match(urlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          rel="noopener"
+          className="underline font-bold text-gdg-blue hover:text-gdg-yellow transition-colors break-all"
+        >
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 const ChatMessageItem = React.memo(
   function ChatMessageItem({ message, isTyping }: ChatMessageItemProps) {
     const isUser = message.role === "user";
@@ -83,7 +105,7 @@ const ChatMessageItem = React.memo(
               <span className="w-2 h-2 rounded-full bg-gdg-green animate-bounce [animation-delay:0.45s]" />
             </div>
           ) : (
-            message.content
+            renderFormattedContent(message.content)
           )}
 
           {!isTyping && (
@@ -130,8 +152,7 @@ export function AIAssistantModal({ isOpen, onClose }: AIAssistantModalProps) {
     {
       id: "welcome",
       role: "model",
-      content:
-        "👋 Hi! I'm Ask GDG AI, powered by Google Gemini. Ask me anything about Google Developer Groups RBU, our upcoming Orientation, or how to join our developer tracks!",
+      content: `👋 Hi! I'm Ask GDG AI, powered by Google Gemini. Ask me anything about Google Developer Groups RBU, our upcoming Orientation, or how to join our developer tracks!\n\n🔗 Live Events Portal: ${linksConfig.events}\n🔐 Join / Sign In: ${linksConfig.login}`,
       timestamp: "Just now",
     },
   ]);

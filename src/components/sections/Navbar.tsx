@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, X, ChevronDown, User } from "lucide-react";
 import { navigationData, type NavItem } from "@/data/navigation";
+import { linksConfig } from "@/config/links";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -130,8 +131,18 @@ export function Navbar() {
           })}
         </ul>
 
-        {/* Right: User Profile Badge + Theme Toggle */}
+        {/* Right: Join Us CTA + User Profile Badge + Theme Toggle */}
         <div className="hidden sm:flex items-center gap-3">
+          {/* Join Us Button */}
+          <a
+            href={linksConfig.login}
+            rel="noopener"
+            aria-label="Join GDG RBU: sign in to the events platform"
+            className="inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-full font-mono font-bold text-xs lg:text-sm bg-gdg-yellow text-black border-2 border-border shadow-neo-sm hover:shadow-neo hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all cursor-pointer select-none"
+          >
+            Join Us
+          </a>
+
           {/* User Profile Pill */}
           <div
             className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 rounded-full border-2 border-border bg-surface text-foreground shadow-neo-sm select-none"
@@ -176,6 +187,16 @@ export function Navbar() {
             className="sm:hidden border-t-2 border-border bg-background/95 backdrop-blur-md overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
+              {/* Join Us CTA for Mobile */}
+              <a
+                href={linksConfig.login}
+                rel="noopener"
+                aria-label="Join GDG RBU: sign in to the events platform"
+                className="flex items-center justify-center w-full min-h-[44px] py-2.5 px-4 rounded-xl bg-gdg-yellow text-black font-mono font-bold text-sm border-2 border-border shadow-neo-sm active:translate-y-0.5"
+              >
+                Join Us (Sign In) →
+              </a>
+
               {/* User badge on mobile */}
               <div className="flex items-center justify-between p-3.5 rounded-xl border-2 border-border bg-surface shadow-neo-sm">
                 <div className="flex items-center gap-2.5">
