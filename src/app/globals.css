@@ -91,6 +91,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   overflow-x: hidden;
 }
 

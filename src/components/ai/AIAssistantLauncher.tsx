@@ -4,14 +4,36 @@ import * as React from "react";
 import { Sparkles } from "lucide-react";
 import { AIAssistantModal } from "./AIAssistantModal";
 
+const emptySubscribe = () => () => {};
+function useIsMounted() {
+  return React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
+}
+
 /**
  * Floating Neo-brutalist Launcher for GDG Gemini Assistant.
  * - Persistent floating trigger button at bottom right
  * - Listens for ⌘K / Ctrl+K keyboard shortcut
- * - Coordinates modal open/close state
+ * - Coordinates modal open/close state without duplicate event toggles
+ * - Client-only mounting to prevent SSR hydration flicker
  */
 export function AIAssistantLauncher() {
+  const mounted = useIsMounted();
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleOpen = React.useCallback((e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setIsOpen(true);
+  }, []);
+
+  const handleClose = React.useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   // Global keyboard shortcut listener (Cmd+K or Ctrl+K)
   React.useEffect(() => {
@@ -28,10 +50,17 @@ export function AIAssistantLauncher() {
 
   // Listen for custom trigger event from Hero terminal pill
   React.useEffect(() => {
-    const handleTriggerEvent = () => setIsOpen(true);
+    const handleTriggerEvent = (e: Event) => {
+      e.stopPropagation();
+      setIsOpen(true);
+    };
     window.addEventListener("open-gdg-ai", handleTriggerEvent);
     return () => window.removeEventListener("open-gdg-ai", handleTriggerEvent);
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
@@ -39,8 +68,8 @@ export function AIAssistantLauncher() {
       <div className="fixed bottom-6 right-6 z-40">
         <button
           type="button"
-          onClick={() => setIsOpen(true)}
-          className="group relative inline-flex items-center gap-2.5 min-h-[44px] px-4 py-2.5 rounded-full border-2 border-border bg-gdg-yellow text-black font-mono font-bold text-xs sm:text-sm shadow-neo hover:shadow-neo-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-neo-sm transition-all cursor-pointer select-none"
+          onClick={handleOpen}
+          className="group relative inline-flex items-center gap-2.5 min-h-[44px] px-4 py-2.5 rounded-full border-2 border-border bg-gdg-yellow text-black font-mono font-bold text-xs sm:text-sm shadow-neo hover:shadow-neo-lg hover:-translate-y-0.5 active:translate-y-0 active:shadow-neo-sm transition-transform duration-150 cursor-pointer select-none"
           aria-label="Open GDG Gemini AI Assistant (Shortcut: Cmd+K)"
         >
           {/* Animated Sparkle Icon */}
@@ -58,7 +87,7 @@ export function AIAssistantLauncher() {
       </div>
 
       {/* Interactive Modal */}
-      <AIAssistantModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <AIAssistantModal isOpen={isOpen} onClose={handleClose} />
     </>
   );
 }
