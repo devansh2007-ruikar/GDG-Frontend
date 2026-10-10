@@ -1,0 +1,91 @@
+<svg width="1440" height="72" viewBox="0 0 1440 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- GDG Neo-brutalist bottom decorative geometric shapes strip -->
+  <g id="decorative-shapes">
+    <!-- Shape 1: Green quarter circle / wedge -->
+    <path d="M-10 72 A 48 48 0 0 1 38 24 L 38 72 Z" fill="#00D26A" />
+
+    <!-- Shape 2: Red semicircle facing up -->
+    <path d="M60 52 A 32 32 0 0 1 124 52 Z" transform="rotate(-15 92 52)" fill="#F86B5E" />
+
+    <!-- Shape 3: Yellow tilted rectangle -->
+    <rect x="135" y="18" width="52" height="20" rx="3" transform="rotate(-28 135 18)" fill="#FFC400" />
+
+    <!-- Shape 4: Green small circle -->
+    <circle cx="160" cy="56" r="10" fill="#00D26A" />
+
+    <!-- Shape 5: Blue rectangle block -->
+    <rect x="180" y="32" width="38" height="34" rx="2" transform="rotate(8 180 32)" fill="#4C8DF6" />
+
+    <!-- Shape 6: Red circle -->
+    <circle cx="236" cy="38" r="15" fill="#F86B5E" />
+
+    <!-- Shape 7: Yellow arch / semicircle -->
+    <path d="M250 64 A 28 28 0 0 1 306 64 Z" transform="rotate(-5 278 64)" fill="#FFC400" />
+
+    <!-- Shape 8: Blue circle -->
+    <circle cx="320" cy="58" r="18" fill="#4C8DF6" />
+
+    <!-- Shape 9: Green tilted bar -->
+    <rect x="335" y="24" width="60" height="20" rx="4" transform="rotate(22 335 24)" fill="#00D26A" />
+
+    <!-- Shape 10: Yellow diamond -->
+    <rect x="420" y="28" width="26" height="26" rx="2" transform="rotate(45 433 41)" fill="#FFC400" />
+
+    <!-- Shape 11: Blue small triangle -->
+    <path d="M422 66 L 444 48 L 452 70 Z" fill="#4C8DF6" />
+
+    <!-- Shape 12: Red tilted rectangle -->
+    <rect x="465" y="30" width="36" height="24" rx="2" transform="rotate(-18 465 30)" fill="#F86B5E" />
+
+    <!-- Shape 13: Yellow large circle -->
+    <circle cx="530" cy="46" r="28" fill="#FFC400" />
+
+    <!-- Shape 14: Green tilted square -->
+    <rect x="580" y="22" width="36" height="36" rx="3" transform="rotate(32 580 22)" fill="#00D26A" />
+
+    <!-- Shape 15: Red semicircle -->
+    <path d="M660 48 A 30 30 0 0 1 720 48 Z" transform="rotate(-10 690 48)" fill="#F86B5E" />
+
+    <!-- Shape 16: Yellow medium circle -->
+    <circle cx="760" cy="42" r="22" fill="#FFC400" />
+
+    <!-- Shape 17: Blue right triangle -->
+    <path d="M790 68 L 825 44 L 830 70 Z" fill="#4C8DF6" />
+
+    <!-- Shape 18: Red circle -->
+    <circle cx="850" cy="52" r="14" fill="#F86B5E" />
+
+    <!-- Shape 19: Green angled bar -->
+    <rect x="880" y="16" width="58" height="22" rx="3" transform="rotate(35 880 16)" fill="#00D26A" />
+
+    <!-- Shape 20: Yellow tilted rectangle -->
+    <rect x="965" y="22" width="48" height="20" rx="3" transform="rotate(-24 965 22)" fill="#FFC400" />
+
+    <!-- Shape 21: Red arch / semicircle -->
+    <path d="M1020 54 A 32 32 0 0 1 1084 54 Z" transform="rotate(12 1052 54)" fill="#F86B5E" />
+
+    <!-- Shape 22: Blue block -->
+    <rect x="1100" y="34" width="36" height="34" rx="2" transform="rotate(-6 1100 34)" fill="#4C8DF6" />
+
+    <!-- Shape 23: Green circle -->
+    <circle cx="1155" cy="58" r="12" fill="#00D26A" />
+
+    <!-- Shape 24: Red circle -->
+    <circle cx="1178" cy="38" r="16" fill="#F86B5E" />
+
+    <!-- Shape 25: Yellow large circle -->
+    <circle cx="1235" cy="44" r="26" fill="#FFC400" />
+
+    <!-- Shape 26: Green bar -->
+    <rect x="1280" y="24" width="56" height="22" rx="3" transform="rotate(26 1280 24)" fill="#00D26A" />
+
+    <!-- Shape 27: Blue triangle -->
+    <path d="M1350 68 L 1380 40 L 1395 68 Z" fill="#4C8DF6" />
+
+    <!-- Shape 28: Red circle -->
+    <circle cx="1420" cy="48" r="18" fill="#F86B5E" />
+
+    <!-- Shape 29: Yellow quarter circle -->
+    <path d="M1430 72 A 40 40 0 0 1 1470 32 L 1470 72 Z" fill="#FFC400" />
+  </g>
+</svg>

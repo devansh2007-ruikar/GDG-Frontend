@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+/* ==========================================================================
+   NEO-BRUTALIST DESIGN SYSTEM TOKENS (LIGHT & DARK THEMES)
+   GDG RBU Recruitment Task — Pixel-accurate theme specifications
+   ========================================================================== */
+
+:root {
+  /* Light Theme Palette */
+  --background: #fbfbf9;
+  --surface: #ffffff;
+  --foreground: #111111;
+  --muted: #f0eee6;
+  --muted-foreground: #5a5f6b;
+
+  /* Borders & Solid Offset Shadows */
+  --border: #000000;
+  --shadow-color: #000000;
+  --shadow-offset: 4px 4px 0px #000000;
+  --grid-color: rgba(0, 0, 0, 0.055);
+
+  /* Curated Google Brand Accents (Unchanged in both themes) */
+  --gdg-blue: #4c8df6;
+  --gdg-red: #f86b5e;
+  --gdg-yellow: #ffc400;
+  --gdg-green: #00d26a;
+  --gdg-purple: #7b7ff6;
+  --gdg-cyan: #38bdf8;
+}
+
+.dark {
+  /* Dark Theme Palette (Exact specifications: bg #0F0F0F, grid #1C1C1C, surface #171717, text #F5F5F5) */
+  --background: #0f0f0f;
+  --surface: #171717;
+  --foreground: #f5f5f5;
+  --muted: #222222;
+  --muted-foreground: #a0a0a0;
+
+  /* Crisp White Borders and Shadows in Dark Mode */
+  --border: #ffffff;
+  --shadow-color: #ffffff;
+  --shadow-offset: 4px 4px 0px #ffffff;
+  --grid-color: #1c1c1c;
+
+  /* Accent Colors remain vibrant */
+  --gdg-blue: #4c8df6;
+  --gdg-red: #f86b5e;
+  --gdg-yellow: #ffc400;
+  --gdg-green: #00d26a;
+  --gdg-purple: #7b7ff6;
+  --gdg-cyan: #38bdf8;
+}
+
+/* ==========================================================================
+   TAILWIND V4 INLINE THEME DECLARATIONS
+   ========================================================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  --color-gdg-blue: var(--gdg-blue);
+  --color-gdg-red: var(--gdg-red);
+  --color-gdg-yellow: var(--gdg-yellow);
+  --color-gdg-green: var(--gdg-green);
+  --color-gdg-purple: var(--gdg-purple);
+  --color-gdg-cyan: var(--gdg-cyan);
+
+  --font-pixel: var(--font-pixel);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --shadow-neo: var(--shadow-offset);
+  --shadow-neo-sm: 2px 2px 0px var(--shadow-color);
+  --shadow-neo-md: 4px 4px 0px var(--shadow-color);
+  --shadow-neo-lg: 6px 6px 0px var(--shadow-color);
+  --shadow-neo-xl: 8px 8px 0px var(--shadow-color);
+}
+
+/* ==========================================================================
+   BASE STYLES & FLUID TYPOGRAPHY
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Reusable faint grid background utility */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+
+/* Neo-brutalist tactile border & shadow helpers */
+.neo-border {
+  border: 2px solid var(--border);
+}
+
+.neo-shadow {
+  box-shadow: 4px 4px 0px var(--shadow-color);
+}
+
+.neo-shadow-sm {
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.neo-shadow-lg {
+  box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+/* Interactive press and lift effects for buttons & cards */
+.neo-interactive {
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.neo-interactive:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+.neo-interactive:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+/* Fluid Responsive Typography with clamp() */
+.font-fluid-hero {
+  font-size: clamp(1.85rem, 5vw + 0.5rem, 3.5rem);
+  line-height: 1.15;
+}
+
+.font-fluid-heading {
+  font-size: clamp(1.5rem, 3.5vw + 0.5rem, 2.75rem);
+  line-height: 1.2;
+}
+
+.font-fluid-subheading {
+  font-size: clamp(0.875rem, 1.2vw + 0.6rem, 1.125rem);
+  line-height: 1.6;
+}
+
+/* Touch targets: 44px minimum touch boundary */
+.tap-target-44 {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Selection highlight in Google yellow */
+::selection {
+  background-color: var(--gdg-yellow);
+  color: #000000;
+}
+
+/* Accessibility: Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

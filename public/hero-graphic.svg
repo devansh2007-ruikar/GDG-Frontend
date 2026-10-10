@@ -1,0 +1,35 @@
+<svg width="400" height="280" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Neo-brutalist retro chat / terminal speech block graphic -->
+  <defs>
+    <filter id="neoShadow" x="0" y="0" width="410" height="290" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#000000" flood-opacity="1" />
+    </filter>
+  </defs>
+
+  <!-- Stepped black background shape -->
+  <path d="M 60 20
+           C 60 12, 68 8, 80 8
+           L 320 8
+           C 336 8, 344 16, 344 28
+           L 344 70
+           L 380 70
+           C 392 70, 396 76, 396 88
+           L 396 220
+           C 396 236, 388 244, 372 244
+           L 120 244
+           C 104 244, 96 236, 96 220
+           L 96 170
+           L 60 170
+           C 44 170, 36 160, 36 144
+           L 36 36
+           C 36 24, 44 20, 60 20 Z"
+        fill="#000000" />
+
+  <!-- Inner white interactive pill/terminal slot -->
+  <rect x="110" y="100" width="220" height="42" rx="21" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+
+  <!-- Terminal prompt text / GDG code tag -->
+  <text x="220" y="126" text-anchor="middle" font-family="var(--font-mono, monospace)" font-size="16" font-weight="700" fill="#6B7280" letter-spacing="2">
+    gdgrbu.app
+  </text>
+</svg>
