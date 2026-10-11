@@ -6,12 +6,6 @@ export interface NavItem {
   ariaLabel: string;
 }
 
-export interface UserProfile {
-  name: string;
-  role: string;
-  avatarUrl: string;
-}
-
 export interface NavigationData {
   logo: {
     src: string;
@@ -19,7 +13,6 @@ export interface NavigationData {
     href: string;
   };
   items: NavItem[];
-  user: UserProfile;
 }
 
 export const navigationData: NavigationData = {
@@ -72,9 +65,4 @@ export const navigationData: NavigationData = {
       ariaLabel: "Explore More and FAQs",
     },
   ],
-  user: {
-    name: "Saptarshi Manjhi",
-    role: "Member",
-    avatarUrl: "/team.webp",
-  },
 };

@@ -70,7 +70,7 @@ This recruitment portal is directly connected to our live, production-grade **GD
   - Tactile 4px solid offset box shadows (`4px 4px 0px #000000` in light mode, `4px 4px 0px #FFFFFF` in dark mode).
   - Exact Google brand accent palette: Blue (`#4C8DF6`), Red (`#F86B5E`), Yellow (`#FFC400`), Green (`#00D26A`), Purple (`#7B7FF6`), and Cyan (`#38BDF8`).
 - [x] **Complete Section Hierarchy (in exact Figma sequence)**:
-  - [x] **Sticky Navbar**: Official GDG vector brackets logo, colored pill navigation links with active press states, user profile badge (`Saptarshi Manjhi ⌄`), theme toggle, and responsive mobile drawer.
+  - [x] **Sticky Navbar**: Official GDG vector brackets logo, colored pill navigation links with active press states, tactile "Join Us" button, theme toggle, and responsive mobile drawer.
   - [x] **Hero Section**: Retro pixel font heading (`Pixelify Sans`), monospace body copy (`Geist Mono`), dual CTAs (`[ LEARN MORE ]`, `[ JOIN US ]`), tilted `-4°` badge (`[ GDG • RBU ]`), and retro terminal container with interactive launcher pill (`gdgrbu.app / ⌘K`).
   - [x] **Upcoming Event Section**: Brushed metallic gradient card (`GDG ORIENTATION`) with yellow action button, paired with the vibrant yellow featured event card (`Oct 7, 2024 / 3:00 PM`) and `[ Register Now ]` CTA.
   - [x] **Meet the Team Section**: Neo-brutalist container card with 2 community pillars (*Passionate Community Leaders*, *Empowering Developers*) and retina-optimized WebP team photo.

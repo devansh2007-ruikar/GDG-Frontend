@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, ChevronDown, User } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { navigationData, type NavItem } from "@/data/navigation";
 import { linksConfig } from "@/config/links";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -131,7 +131,7 @@ export function Navbar() {
           })}
         </ul>
 
-        {/* Right: Join Us CTA + User Profile Badge + Theme Toggle */}
+        {/* Right: Join Us CTA + Theme Toggle */}
         <div className="hidden sm:flex items-center gap-3">
           {/* Join Us Button */}
           <a
@@ -142,20 +142,6 @@ export function Navbar() {
           >
             Join Us
           </a>
-
-          {/* User Profile Pill */}
-          <div
-            className="flex items-center gap-2 min-h-[44px] px-3.5 py-2 rounded-full border-2 border-border bg-surface text-foreground shadow-neo-sm select-none"
-            title={`Logged in as ${navigationData.user.name}`}
-          >
-            <div className="w-6 h-6 rounded-full bg-gdg-yellow border border-border overflow-hidden flex items-center justify-center shrink-0">
-              <User className="w-3.5 h-3.5 text-black" />
-            </div>
-            <span className="font-sans text-xs font-semibold max-w-[120px] truncate">
-              {navigationData.user.name}
-            </span>
-            <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
-          </div>
 
           {/* Light/Dark Mode Switch */}
           <ThemeToggle />
@@ -186,7 +172,7 @@ export function Navbar() {
             transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: "easeInOut" }}
             className="sm:hidden border-t-2 border-border bg-background/95 backdrop-blur-md overflow-hidden"
           >
-            <div className="px-4 py-6 space-y-4">
+            <div className="px-4 py-5 space-y-4">
               {/* Join Us CTA for Mobile */}
               <a
                 href={linksConfig.login}
@@ -197,26 +183,8 @@ export function Navbar() {
                 Join Us (Sign In) →
               </a>
 
-              {/* User badge on mobile */}
-              <div className="flex items-center justify-between p-3.5 rounded-xl border-2 border-border bg-surface shadow-neo-sm">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-gdg-yellow border border-border flex items-center justify-center">
-                    <User className="w-4 h-4 text-black" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold leading-tight">
-                      {navigationData.user.name}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground">
-                      {navigationData.user.role}
-                    </p>
-                  </div>
-                </div>
-                <ChevronDown className="w-4 h-4 text-muted-foreground" />
-              </div>
-
               {/* Mobile Pill Links */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-2 gap-3 pt-1">
                 {navigationData.items.map((item) => (
                   <Link
                     key={item.id}

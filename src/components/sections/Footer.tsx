@@ -163,7 +163,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Follow GDG RBU on ${link.name}`}
+                    aria-label={link.ariaLabel || `Follow GDG RBU on ${link.name}`}
                     className={`w-12 h-12 min-w-[48px] min-h-[48px] rounded-xl border-2 border-border flex items-center justify-center shadow-neo-sm hover:shadow-neo hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all cursor-pointer ${link.colorClass}`}
                   >
                     {getSocialIcon(link.icon)}

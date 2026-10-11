@@ -4,6 +4,7 @@ export interface SocialLink {
   href: string;
   icon: "instagram" | "linkedin" | "twitter";
   colorClass: string;
+  ariaLabel: string;
 }
 
 export interface FooterData {
@@ -46,23 +47,26 @@ export const footerData: FooterData = {
       {
         id: "instagram",
         name: "Instagram",
-        href: "https://instagram.com/gdg_rbu",
+        href: "https://instagram.com/gdsc_rcoem",
         icon: "instagram",
         colorClass: "bg-gdg-red text-white",
+        ariaLabel: "GDG RBU on Instagram",
       },
       {
         id: "linkedin",
         name: "LinkedIn",
-        href: "https://linkedin.com/company/gdg-rbu",
+        href: "https://linkedin.com/company/gdsc-rcoem",
         icon: "linkedin",
         colorClass: "bg-gdg-blue text-white",
+        ariaLabel: "GDG RBU on LinkedIn",
       },
       {
         id: "twitter",
         name: "X (Twitter)",
-        href: "https://x.com/gdg_rbu",
+        href: "https://x.com/gdsc_rcoem",
         icon: "twitter",
         colorClass: "bg-gdg-green text-black",
+        ariaLabel: "GDG RBU on X",
       },
     ],
   },

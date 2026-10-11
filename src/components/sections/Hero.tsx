@@ -141,34 +141,27 @@ export function Hero() {
               }}
               className="relative w-full max-w-[340px] sm:max-w-[380px]"
             >
-              {/* Stepped Black Organic Terminal Shape */}
-              <div className="relative rounded-3xl bg-black p-6 sm:p-8 border-2 border-border shadow-neo-lg overflow-hidden group">
+              {/* Stepped Black Organic Terminal Shape (Decorative Mockup) */}
+              <div
+                aria-hidden="true"
+                className="relative rounded-3xl bg-black p-6 sm:p-8 border-2 border-border shadow-neo-lg overflow-hidden select-none"
+              >
                 {/* Subtle pixel grid pattern within blob */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
 
                 {/* Inner cutout contents */}
                 <div className="relative z-10 flex flex-col items-center justify-center min-h-[160px] sm:min-h-[185px]">
-                  {/* White Interactive Pill element inside black graphic (triggers AI assistant) */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (typeof window !== "undefined") {
-                        window.dispatchEvent(new CustomEvent("open-gdg-ai"));
-                      }
-                    }}
-                    className="w-full max-w-[260px] sm:max-w-[280px] min-h-[44px] h-11 sm:h-12 rounded-full bg-white border-2 border-black shadow-neo-sm flex items-center justify-between px-4 transition-transform group-hover:scale-102 hover:shadow-neo active:translate-y-0.5 cursor-pointer text-left"
-                    aria-label="Open GDG AI Assistant (Shortcut: ⌘K)"
+                  {/* Decorative white URL-bar mockup pill */}
+                  <div
+                    className="w-full max-w-[260px] sm:max-w-[280px] min-h-[44px] h-11 sm:h-12 rounded-full bg-white border-2 border-black shadow-neo-sm flex items-center justify-between px-4 cursor-default select-none"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-gdg-green animate-pulse" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-gdg-green" />
                       <span className="font-mono text-xs sm:text-sm font-bold text-neutral-800 tracking-wider">
                         {heroData.graphic.tagText}
                       </span>
                     </div>
-                    <span className="font-mono text-xs font-bold text-neutral-500">
-                      ⌘K
-                    </span>
-                  </button>
+                  </div>
 
                   {/* Terminal status readout below pill */}
                   <div className="mt-4 flex items-center gap-2 text-[11px] font-mono text-neutral-400">
